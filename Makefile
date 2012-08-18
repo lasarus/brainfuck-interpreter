@@ -3,7 +3,7 @@ CCFLAGS := -pedantic -Wall -Werror -g -lSDL -lSDL_image -lm -lGL
 
 SRCDIRS := src
 SOURCES := $(foreach DIR, $(SRCDIRS), $(wildcard $(DIR)/*.c))
-TARGET := bin/FreeEvolution
+TARGET := bin/brain-fuck
 
 .PHONY: all
 .PHONY: clean
