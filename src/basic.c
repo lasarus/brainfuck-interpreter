@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 
 #include "basic.h"
 
@@ -18,61 +19,67 @@ enum
 
 void execute_bf(char * code)
 {
-  char * buffer = malloc(1024);
+  FILE * output;
+  int i;
+  char * buffer = malloc(30000);
   char * bufferptr = buffer;
+  
+  memset(buffer, 0, 30000);
 
-  for(;*code != 0; code++)
+  output = stdout;
+  
+  for(; *code != 0; code++)
     {
       switch(*code)
 	{
 	case BF_ADD:
 	  (*bufferptr)++;
 	  break;
-
+	  
 	case BF_SUB:
 	  (*bufferptr)--;
 	  break;
-
+	  
 	case BF_ALE:
 	  bufferptr--;
 	  break;
-
+	  
 	case BF_ARI:
 	  bufferptr++;
 	  break;
-
+	  
 	case BF_BLE:
 	  if(*bufferptr == 0)
 	    {
-	      int i = 1;
-
-	      for(code++; i != 0; code++)
+	      code++;
+	      for(i = 1; i > 0; code++)
 		{
 		  if(*code == '[')
 		    i++;
 		  else if(*code == ']')
 		    i--;
 		}
+	      code--;
 	    }
 	  break;
 
 	case BF_BRI:
-	  if(*bufferptr)
+	  if(*bufferptr != 0)
 	    {
-	      int i = 1;
-
-	      for(code--; i != 0; code--)
+	      code--;
+	      for(i = 1; i != 0; code--)
 		{
 		  if(*code == '[')
 		    i--;
 		  else if(*code == ']')
 		    i++;
 		}
+	      code++;
 	    }
 	  break;
 
 	case BF_PRINT_CH:
-	  printf("%c", *bufferptr);
+	  fprintf(output, "%c", *bufferptr);
 	  break;
 
 	case BF_GET_CH:
@@ -81,4 +88,5 @@ void execute_bf(char * code)
 	}
     }
   free(buffer);
+  fclose(output);
 }
