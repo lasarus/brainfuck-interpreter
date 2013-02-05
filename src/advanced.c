@@ -54,35 +54,35 @@ element_t * optimize_code(char * code)
   element_count = elements;
   while((*element_count).id != 0)
     {
-      printf("%c%c%c%c\n", (*(element_count - 1)).id, (*(element_count + 0)).id, (*(element_count + 1)).id, (*(element_count + 2)).id);
-      if((*(element_count + 0)).id == '[' &&
-	 (*(element_count + 1)).id == '-' &&
-	 (*(element_count + 2)).id == ']')
-	{
-	  (*element_count2).id = 's';
-	  (*element_count2).data = 0;
+      /* printf("%c%c%c%c\n", (*(element_count - 1)).id, (*(element_count + 0)).id, (*(element_count + 1)).id, (*(element_count + 2)).id); */
+      /* if((*(element_count + 0)).id == '[' && */
+      /* 	 (*(element_count + 1)).id == '-' && */
+      /* 	 (*(element_count + 2)).id == ']') */
+      /* 	{ */
+      /* 	  (*element_count2).id = 's'; */
+      /* 	  (*element_count2).data = 0; */
 
-	  element_count += 2;
-	}
-      else if((*(element_count + 0)).id == '[' &&
-	      (*(element_count + 1)).id == '>' &&
-	      (*(element_count + 2)).id == ']')
-	{
-	  (*element_count2).id = 'f';
-	  (*element_count2).data = (*(element_count + 1)).data;
+      /* 	  element_count += 2; */
+      /* 	} */
+      /* else if((*(element_count + 0)).id == '[' && */
+      /* 	      (*(element_count + 1)).id == '>' && */
+      /* 	      (*(element_count + 2)).id == ']') */
+      /* 	{ */
+      /* 	  (*element_count2).id = 'f'; */
+      /* 	  (*element_count2).data = (*(element_count + 1)).data; */
 
-	  element_count += 2;
-	}
-      else if((*(element_count + 0)).id == '[' &&
-	      (*(element_count + 1)).id == '<' &&
-	      (*(element_count + 2)).id == ']')
-	{
-	  (*element_count2).id = 'b';
-	  (*element_count2).data = (*(element_count + 1)).data;
+      /* 	  element_count += 2; */
+      /* 	} */
+      /* else if((*(element_count + 0)).id == '[' && */
+      /* 	      (*(element_count + 1)).id == '<' && */
+      /* 	      (*(element_count + 2)).id == ']') */
+      /* 	{ */
+      /* 	  (*element_count2).id = 'b'; */
+      /* 	  (*element_count2).data = (*(element_count + 1)).data; */
 
-	  element_count += 2;
-	}
-      else if((*element_count).id == '[')
+      /* 	  element_count += 2; */
+      /* 	} */
+      /* else */ if((*element_count).id == '[')
 	{
 	  element_t * tmp_element_count = element_count;
 	  tmp_element_count = element_count;
